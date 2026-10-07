@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>USS Singapore — Tomorrow Checklist</title>
+<style>
+:root{--navy:#0b2a4a;--blue:#0b74c9;--sky:#eaf6ff;--red:#ef4444;--yellow:#ffd85a;--green:#18a558;--ink:#17324d;--muted:#6b7f93;--card:#fff;--bg:#f4f8fb}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",Arial,sans-serif;background:linear-gradient(#dff3ff,#f8fbfd 38%);color:var(--ink)}
+.wrap{max-width:760px;margin:auto;padding:16px 14px 44px}
+.hero{background:linear-gradient(135deg,#0b2a4a,#0b74c9);color:white;border-radius:24px;padding:22px 18px 18px;box-shadow:0 12px 30px #0b2a4a22;text-align:center;position:relative;overflow:hidden}
+.hero:after{content:"★  ✦  ★";position:absolute;right:18px;top:12px;color:#ffd85a99;font-size:24px;transform:rotate(8deg)}
+.hero h1{font-size:25px;line-height:1.05;margin:0 0 8px}.hero p{margin:4px 0;font-size:14px;opacity:.95}
+.progressBox{background:#ffffff22;border:1px solid #ffffff55;border-radius:16px;padding:10px;margin-top:15px}
+.progressText{display:flex;justify-content:space-between;font-weight:700;font-size:13px}.bar{height:12px;background:#ffffff33;border-radius:999px;overflow:hidden;margin-top:7px}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffd85a,#70e58e);transition:.45s ease}
+.tip{margin:12px 0;background:#fff3b7;border:1px solid #efd05a;border-radius:16px;padding:11px 13px;text-align:center;font-weight:700;font-size:13px}
+.section{background:var(--card);border-radius:20px;margin:13px 0;padding:14px;box-shadow:0 5px 18px #17324d12;border:1px solid #e4edf4}
+.head{display:flex;gap:12px;align-items:center;margin-bottom:8px}.badge{width:45px;height:45px;border-radius:14px;background:#eaf6ff;display:grid;place-items:center;font-size:25px}.head h2{font-size:17px;margin:0}.head small{color:var(--muted)}
+.person{margin-left:auto;width:54px;height:64px;position:relative;flex:0 0 auto}
+.headCircle{width:20px;height:20px;background:#f2b68c;border-radius:50%;position:absolute;top:2px;left:17px;z-index:3}
+.hair{width:21px;height:10px;background:#263238;border-radius:12px 12px 4px 4px;position:absolute;top:0;left:16px;z-index:4}
+.body{width:25px;height:29px;background:#1681d4;border-radius:10px 10px 7px 7px;position:absolute;top:21px;left:14px}
+.arm,.leg{position:absolute;width:7px;height:25px;background:#f2b68c;border-radius:8px;transform-origin:top center}.a1{top:25px;left:10px;transform:rotate(16deg)}.a2{top:25px;right:10px;transform:rotate(-16deg)}.l1{top:46px;left:18px;background:#233f5d}.l2{top:46px;right:17px;background:#233f5d}
+.person.done .a1{animation:waveL .65s infinite alternate}.person.done .a2{animation:waveR .65s infinite alternate}.person.done{animation:bounce .65s infinite alternate}.person.done .body{background:#18a558}
+@keyframes waveL{to{transform:rotate(145deg)}} @keyframes waveR{to{transform:rotate(-145deg)}} @keyframes bounce{to{transform:translateY(-5px)}}
+.complete{display:none;color:#118746;font-weight:800;font-size:12px;margin-top:2px}.section.done .complete{display:block}
+.item{display:flex;align-items:flex-start;gap:10px;padding:9px 5px;border-top:1px solid #eef3f6;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.item:first-of-type{border-top:0}.item input{position:absolute;opacity:0}.check{width:25px;height:25px;border:2px solid #9db1c2;border-radius:8px;display:grid;place-items:center;flex:0 0 auto;transition:.18s}.item input:checked+.check{background:#18a558;border-color:#18a558;transform:scale(1.05)}.item input:checked+.check:after{content:"✓";color:white;font-size:18px;font-weight:900}.txt{font-size:14px;line-height:1.35}.item input:checked~.txt{text-decoration:line-through;color:#8798a8}
+.final{background:#ef4444;color:#fff;border-radius:18px;padding:14px;text-align:center;margin:14px 0}.final b{font-size:16px}.final .mini{font-size:12px;margin-top:5px}
+.reminderBox{background:#fff7dc;border:1px solid #efd27a;border-radius:18px;padding:13px 14px;margin:14px 0}.reminderTop{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.reminderText{font-size:13px;line-height:1.45;flex:1;min-width:180px}.reminderText b{display:block;font-size:15px;color:#8a5a00}.reminderBtn{border:0;border-radius:999px;background:#f3c74f;color:#533900;padding:10px 14px;font-weight:800;font-size:13px}.pendingList{display:none;margin:10px 0 0;padding:10px 0 0 20px;border-top:1px dashed #dfc36f;font-size:13px;line-height:1.5}.pendingList.show{display:block}.pendingList li{margin:5px 0}.pendingList .groupName{font-weight:800;color:#35536d}.reset{width:100%;border:0;border-radius:15px;background:#dfe8ef;color:#35536d;padding:12px;font-weight:700;font-size:14px}.celebrate{position:fixed;inset:0;background:#0b2a4add;display:none;place-items:center;z-index:20;padding:20px}.celebrate.show{display:grid}.pop{background:white;border-radius:26px;padding:26px 20px;text-align:center;max-width:360px;width:100%;animation:pop .3s ease}.bigHuman{font-size:70px;animation:bounce2 .55s infinite alternate}.pop h2{margin:8px 0;color:#0b74c9}.pop button{border:0;background:#0b74c9;color:white;padding:11px 22px;border-radius:999px;font-weight:800}
+@keyframes pop{from{transform:scale(.7);opacity:0}} @keyframes bounce2{to{transform:translateY(-10px) rotate(4deg)}}
+.footer{text-align:center;color:#6b7f93;font-size:11px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>UNIVERSAL STUDIOS<br>SINGAPORE</h1>
+<p>🎢 TOMORROW ADVENTURE • 7 OCTOBER 2026</p>
+<p>เตรียมพร้อมคืนนี้ แล้วพรุ่งนี้สนุกเต็มวัน</p>
+<div class="progressBox"><div class="progressText"><span>READY PROGRESS</span><span id="pct">0%</span></div><div class="bar"><div class="fill" id="fill"></div></div><div id="count" style="font-size:12px;margin-top:6px">0 / 0 completed</div></div>
+</section>
+<div class="tip">⭐ กระเป๋าเบา • รองเท้าสบาย • กันฝน • แบตเต็ม • มีจุดนัดพบ</div>
+<div id="sections"></div>
+<div class="reminderBox" id="reminderBox"><div class="reminderTop"><div class="reminderText"><b id="reminderTitle">🔔 ยังมีรายการที่ต้องเช็ก</b><span id="reminderMsg">กำลังตรวจสอบ Checklist…</span></div><button class="reminderBtn" id="pendingBtn" type="button">ดูรายการที่เหลือ</button></div><ol class="pendingList" id="pendingList"></ol></div>
+<div class="final"><b>FINAL 5 BEFORE LEAVING</b><div class="mini">PHONE • TICKET • CARD/MONEY • POWER BANK • RAINCOAT</div></div>
+<button class="reset" id="resetBtn" type="button" onclick="resetAll()">↻ RESET ALL — กลับเป็น 0%</button>
+<div id="resetMsg" style="text-align:center;color:#18a558;font-size:12px;font-weight:700;margin-top:7px;min-height:18px" aria-live="polite"></div>
+<div class="footer">USS Singapore • Mobile Interactive Checklist</div>
+</div>
+<div class="celebrate" id="celebrate"><div class="pop"><div class="bigHuman">🙌</div><h2>100% READY!</h2><p>จัดของครบแล้ว พร้อมลุย Universal Studios Singapore 🎢</p><button onclick="closePop()">LET'S GO!</button></div></div>
+<script>
+const groups=[
+["🌙","คืนนี้ — PACK & CHARGE",["ตั๋ว USS / QR Code + Screenshot แบบ Offline","ชาร์จโทรศัพท์ 100%","ชาร์จ Power Bank 100%","เช็ก SIM / eSIM / Roaming","บัตรเครดิต / Travel Card + เงินสด SGD","เสื้อกันฝน + Ziplock 2–3 ใบ","ตั้งปลุก + เช็กอากาศ"]],
+["👟","ชุดพรุ่งนี้ — WALK ALL DAY",["เสื้อยืด / Dry-fit ระบายอากาศดี","กางเกงเบา เคลื่อนไหวง่าย","รองเท้าผ้าใบคู่ที่เดินสบายแล้ว","ถุงเท้า","หมวก","ทาครีมกันแดด","ไม่ใช้รองเท้าคู่ใหม่"]],
+["🎒","DAY BAG — เอาแค่นี้พอ",["โทรศัพท์","Power Bank + สายชาร์จสั้น","ตั๋ว / QR Code","บัตร / เงินสด SGD","ครีมกันแดด","เสื้อกันฝน","Ziplock + ทิชชู / ทิชชูเปียก","ยาประจำตัว + พลาสเตอร์ยา"]],
+["☀️","ก่อนออกจากโรงแรม",["กินอาหารเช้า + ดื่มน้ำ","เข้าห้องน้ำให้เรียบร้อย","ทาครีมกันแดด","โทรศัพท์ + Power Bank เต็ม","เปิด Internet/Data","เช็กตั๋ว / เงิน / บัตร","ตกลง Meeting Point ของครอบครัว"]],
+["🎢","เมื่อถึง UNIVERSAL",["ตั้ง Meeting Point ที่ทุกคนจำได้","เช็ก Show / เวลารอเครื่องเล่น","เล่นตัวที่อยากเล่นที่สุดก่อน","พักและดื่มน้ำเป็นระยะ","แบตใกล้ 40% เริ่มชาร์จ","ก่อนกลับเช็กโทรศัพท์ / กระเป๋า / ของฝาก"]]
+];
+const root=document.getElementById("sections");
+let n=0;
+groups.forEach((g,gi)=>{
+ let sec=document.createElement("section"); sec.className="section"; sec.dataset.group=gi;
+ sec.innerHTML=`<div class="head"><div class="badge">${g[0]}</div><div><h2>${g[1]}</h2><small>${g[2].length} รายการ</small><div class="complete">✓ หัวข้อนี้พร้อมแล้ว!</div></div><div class="person"><div class="hair"></div><div class="headCircle"></div><div class="body"></div><div class="arm a1"></div><div class="arm a2"></div><div class="leg l1"></div><div class="leg l2"></div></div></div>`;
+ g[2].forEach((x,ii)=>{
+  let id=`c_${gi}_${ii}`; n++;
+  sec.insertAdjacentHTML("beforeend",`<label class="item"><input type="checkbox" id="${id}"><span class="check"></span><span class="txt">${x}</span></label>`);
+ });
+ root.appendChild(sec);
+});
+const checks=[...document.querySelectorAll('input[type=checkbox]')];
+checks.forEach(c=>{c.checked=localStorage.getItem(c.id)==="1";c.addEventListener("change",()=>{localStorage.setItem(c.id,c.checked?"1":"0");update()})});
+let celebrated=sessionStorage.getItem("ussCelebrated")==="1";
+function update(){
+ let done=checks.filter(x=>x.checked).length, pct=Math.round(done/checks.length*100);
+ document.getElementById("pct").textContent=pct+"%"; document.getElementById("fill").style.width=pct+"%"; document.getElementById("count").textContent=`${done} / ${checks.length} completed`;
+ document.querySelectorAll(".section").forEach(sec=>{
+  let cs=[...sec.querySelectorAll("input")], ok=cs.every(x=>x.checked);
+  sec.classList.toggle("done",ok); sec.querySelector(".person").classList.toggle("done",ok);
+ });
+ updateReminder(done);
+ if(done===checks.length && !celebrated){document.getElementById("celebrate").classList.add("show");celebrated=true;sessionStorage.setItem("ussCelebrated","1")}
+}
+function updateReminder(done){
+ const left=checks.length-done, title=document.getElementById("reminderTitle"), msg=document.getElementById("reminderMsg"), btn=document.getElementById("pendingBtn"), list=document.getElementById("pendingList");
+ list.innerHTML="";
+ if(left===0){title.textContent="✅ Checklist ครบแล้ว!";msg.textContent="พร้อมออกเดินทางและสนุกที่ Universal Studios Singapore ได้เลย";btn.textContent="ครบทั้งหมด";btn.disabled=true;list.classList.remove("show");return;}
+ btn.disabled=false; btn.textContent=`ดู ${left} รายการที่เหลือ`;
+ title.textContent=left<=5?`⚠️ เหลืออีกเพียง ${left} รายการ`:`🔔 ยังเหลือ ${left} รายการ`;
+ msg.textContent=done===0?"เริ่มเช็กจากของสำคัญก่อน: โทรศัพท์ ตั๋ว บัตร/เงิน Power Bank และเสื้อกันฝน":(left<=5?"ใกล้ครบแล้ว! เช็กอีกนิดก่อนออกเดินทาง":"แตะปุ่มเพื่อดูเฉพาะรายการที่ยังไม่ได้ติ๊ก");
+ groups.forEach((g,gi)=>g[2].forEach((x,ii)=>{const c=document.getElementById(`c_${gi}_${ii}`);if(!c.checked){const li=document.createElement("li");li.innerHTML=`<span class="groupName">${g[0]} ${g[1]}:</span> ${x}`;list.appendChild(li)}}));
+}
+document.getElementById("pendingBtn").addEventListener("click",()=>{const list=document.getElementById("pendingList");list.classList.toggle("show");document.getElementById("pendingBtn").textContent=list.classList.contains("show")?"ซ่อนรายการ":`ดู ${checks.filter(x=>!x.checked).length} รายการที่เหลือ`;});
+function resetAll(){
+ if(confirm("รีเซ็ต Checklist ทั้งหมดกลับเป็น 0% ใช่ไหม?")){
+  checks.forEach(c=>{c.checked=false;localStorage.removeItem(c.id)});
+  sessionStorage.removeItem("ussCelebrated");
+  celebrated=false;
+  document.getElementById("celebrate").classList.remove("show");
+  update();
+  const msg=document.getElementById("resetMsg");
+  msg.textContent="✓ รีเซ็ตเรียบร้อย — Progress กลับเป็น 0%";
+  window.scrollTo({top:0,behavior:"smooth"});
+  setTimeout(()=>{msg.textContent=""},3500);
+ }
+}
+function closePop(){document.getElementById("celebrate").classList.remove("show")}
+update();
+</script>
+</body>
+</html>
